@@ -50,6 +50,7 @@ exports.getAllCourses = async (req, res) => {
 
 exports.getCourse = async (req, res) => {
   try {
+    const { slug } = req.params;
     const course = await Course.findOne({slug: req.params.slug});
 
     res.status(201).render('course', {

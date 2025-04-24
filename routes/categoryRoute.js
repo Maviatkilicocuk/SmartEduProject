@@ -3,7 +3,7 @@ const categoryController = require('../controllers/categoryController');
 
 const router = express.Router();
 
-router.route('/').post(categoryController.createCategory); // http://localhost:3000/courses gidilmiş haldeyiz.
+router.route('/').post(categoryController.createCategory);
 
 
 module.exports = router;
