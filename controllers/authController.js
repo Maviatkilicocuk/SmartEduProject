@@ -19,7 +19,6 @@ exports.createUser = async (req, res) => {
 exports.loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-
     const user = await User.findOne({ email });
 
     if (user) {
@@ -29,10 +28,10 @@ exports.loginUser = async (req, res) => {
         req.session.userID = user._id;
         res.status(200).redirect('/users/dashboard');
       } else {
-        res.status(401).send('Şifre yanlış');
+        res.status(400).send('Şifre yanlış!');
       }
     } else {
-      res.status(404).send('Kullanıcı bulunamadı');
+      res.status(400).send('Kullanıcı bulunamadı!');
     }
 
   } catch (err) {
@@ -42,6 +41,7 @@ exports.loginUser = async (req, res) => {
     });
   }
 };
+
 
 exports.logoutUser = (req, res) => {
   req.session.destroy(() => {
