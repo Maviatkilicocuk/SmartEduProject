@@ -125,3 +125,37 @@ exports.releaseCourse = async (req, res) => {
     });
   }
 };
+
+exports.deleteCourse = async (req, res) => {
+  try {
+
+    const course = await Course.findOneAndDelete({slug:req.params.slug})
+
+    req.flash("error", `${course.name} has been removed succesfully`);
+
+    res.status(200).redirect('/users/dashboard');
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      error: err.message,
+    });
+  }
+};
+
+exports.updateCourse = async (req, res) => {
+  try {
+
+    const course = await Course.findOne({slug:req.params.slug})
+    course.name = req.body.name;
+    course.category = req.body.category;
+    course.description = req.body.description;
+    course.save();
+
+    res.status(200).redirect('/users/dashboard');
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      error: err.message,
+    });
+  }
+};
