@@ -12,7 +12,7 @@ const userRoute = require('./routes/userRoute');
 const app = express();
 
 //Connect DB
-mongoose.connect('mongodb+srv://enverbilalbirinci:Enver.5334.@smartedu.etv8yib.mongodb.net/?retryWrites=true&w=majority&appName=SmartEdu').then(() => {
+mongoose.connect('mongodb+srv://enverbilalbirinci:Enver.5334.@smartedu.etv8yib.mongodb.net/smartedu?retryWrites=true&w=majority&appName=SmartEdu').then(() => {
   console.log('DB bağlantısı sağlandı.');
 });
 
@@ -28,7 +28,7 @@ app.use(
     secret: 'my_keyboard_cat',
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1/smartedu-db' }),
+    store: MongoStore.create({ mongoUrl: 'mongodb+srv://enverbilalbirinci:Enver.5334.@smartedu.etv8yib.mongodb.net/smartedu?retryWrites=true&w=majority&appName=SmartEdu' }),
   })
 );
 app.use(flash());
