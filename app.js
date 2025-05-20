@@ -29,8 +29,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({ mongoUrl: 'mongodb+srv://enverbilalbirinci:Enver.5334.@smartedu.etv8yib.mongodb.net/smartedu?retryWrites=true&w=majority&appName=SmartEdu' }),
-  })
-);
+  }) );
 app.use(flash());
 app.use((req, res, next) => {
   res.locals.flashMessages = req.flash();
